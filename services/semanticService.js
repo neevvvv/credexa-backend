@@ -1,6 +1,6 @@
 const axios = require("axios");
 
-const SEMANTIC_API_URL = "http://127.0.0.1:8000/semantic-score";
+const SEMANTIC_API_URL = "https://NeevSahu-credexa-ml.hf.space/semantic-score";
 
 async function getSemanticScore(resumeText, jobDescription) {
   try {

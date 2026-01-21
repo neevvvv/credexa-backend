@@ -43,19 +43,20 @@ overall_review, strengths, areas_to_improve, role_fit_summary
 `;
 
     const response = await axios.post(
-      GENAI_API_URL,
-      {
-        model: "gpt-4o-mini",
-        messages: [{ role: "user", content: prompt }],
-        temperature: 0.4
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${GENAI_API_KEY}`,
-          "Content-Type": "application/json"
-        }
-      }
-    );
+  GENAI_API_URL,
+  {
+    model: "gpt-4o-mini",
+    messages: [{ role: "user", content: prompt }],
+    temperature: 0,
+    top_p: 1
+  },
+  {
+    headers: {
+      Authorization: `Bearer ${GENAI_API_KEY}`,
+      "Content-Type": "application/json"
+    }
+  }
+);
 
     let content = response.data.choices[0].message.content.trim();
 

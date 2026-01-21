@@ -1,6 +1,6 @@
 const axios = require("axios");
 
-const ML_BASE_URL = "http://127.0.0.1:8000";
+const ML_BASE_URL = "https://NeevSahu-credexa-ml.hf.space";
 
 async function getSkillConceptScores(jdSkills, resumeSentences) {
   try {
