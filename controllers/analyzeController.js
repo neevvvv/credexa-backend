@@ -196,6 +196,8 @@ exports.analyzeResume = async (req, res) => {
       score_band: scoreBand,
       score_explanation: scoreExplanation,
       role,
+      skill_fit_percent: skillFit,
+      semantic_percent : Math.round(semanticScore*100),
       matching_skills: matchingSkills,
       missing_skills: criticalMissingSkills,
       review: finalReview,

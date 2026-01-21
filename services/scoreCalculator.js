@@ -19,44 +19,38 @@ function calculateScore(sections, jd) {
     }
   });
 
-  const skillScore =
-    (matchedSkills.length / SKILLS.length) * WEIGHTS.skills;
+  const skillScore = (matchedSkills.length / SKILLS.length) * WEIGHTS.skills;
 
-  const experienceScore = sections.experience
-    ? WEIGHTS.experience
-    : 0;
+  const skillMatchPercent = Math.round(
+    (matchedSkills.length / SKILLS.length) * 100,
+  );
 
-  const educationScore = sections.education
-    ? WEIGHTS.education
-    : 0;
+  const experienceScore = sections.experience ? WEIGHTS.experience : 0;
 
-  const certificateBonus = sections.certificates
-    ? WEIGHTS.certificates
-    : 0;
+  const educationScore = sections.education ? WEIGHTS.education : 0;
+
+  const certificateBonus = sections.certificates ? WEIGHTS.certificates : 0;
 
   const totalScore = Math.min(
     Math.round(
-      skillScore +
-        experienceScore +
-        educationScore +
-        certificateBonus
+      skillScore + experienceScore + educationScore + certificateBonus,
     ),
-    100
+    100,
   );
 
   return {
     score: totalScore,
+    skill_match_percent: skillMatchPercent,
     breakdown: {
       skills: Math.round(skillScore),
       experience: experienceScore,
       education: educationScore,
-      certificates: certificateBonus
+      certificates: certificateBonus,
     },
     explanation: {
       matchedSkills,
-      note:
-        "Score is based on skill overlap, experience relevance, education, and certificates"
-    }
+      note: "Score is based on skill overlap, experience relevance, education, and certificates",
+    },
   };
 }
 
